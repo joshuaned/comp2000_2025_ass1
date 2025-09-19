@@ -30,13 +30,10 @@ public class Cell extends Rectangle {
     if(contains(mousePos)) {
       g.setColor(Color.GRAY);
     } else {
-      g.setColor(Color.WHITE);
+      tile.paint(g); // instead of white put the biomes
     }
-    g.fillRect(x, y, size, size);
     g.setColor(Color.BLACK);
     g.drawRect(x, y, size, size);
-
-    tile.paint(g);
   }
 
   public boolean contains(Point p) {

@@ -17,7 +17,13 @@ public class Cell extends Rectangle {
     row = inRow;
 
     // randomly decide the tile type
-    
+    int temp = r.nextInt(2);
+
+    if(temp == 1) {
+      tile = new Lava(this);
+    } else {
+      tile = new Grass(this);
+    }
   }
 
   public void paint(Graphics g, Point mousePos) {

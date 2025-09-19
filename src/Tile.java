@@ -1,10 +1,12 @@
-
+import java.awt.Color;
 import java.awt.Graphics;
 
 public abstract class Tile {
     // var
     boolean isDecay;
     boolean isGrowth;
+    Color color;
+    Cell p;
     int size = 30;
 
     // constructor
@@ -15,6 +17,7 @@ public abstract class Tile {
 
     // method
     public void paint(Graphics g) {
-        g.fillRect(size, size, size, size);
+        g.setColor(color);
+        g.fillRect(p.x, p.y, size, size);
     }
 }

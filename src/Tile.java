@@ -6,8 +6,8 @@ public abstract class Tile {
     boolean isDecay;
     boolean isGrowth;
     Color color;
-    Cell p;
-    int size = 30;
+    Cell cell;
+    int size = 15;
 
     // constructor
     public Tile(boolean x, boolean y) {
@@ -18,6 +18,6 @@ public abstract class Tile {
     // method
     public void paint(Graphics g) {
         g.setColor(color);
-        g.fillRect(p.x, p.y, size, size);
+        g.fillRect(cell.x, cell.y, size, size);
     }
 }

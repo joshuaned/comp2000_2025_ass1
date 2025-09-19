@@ -2,16 +2,22 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.util.Random;
 
 public class Cell extends Rectangle {
   static int size = 35;
   char col;
   int row;
+  Random r = new Random(); // for random num
+  Tile tile;
 
   public Cell(char inCol, int inRow, int x, int y) {
     super(x, y, size, size);
     col = inCol;
     row = inRow;
+
+    // randomly decide the tile type
+    
   }
 
   public void paint(Graphics g, Point mousePos) {
@@ -23,6 +29,8 @@ public class Cell extends Rectangle {
     g.fillRect(x, y, size, size);
     g.setColor(Color.BLACK);
     g.drawRect(x, y, size, size);
+
+    tile.paint(g);
   }
 
   public boolean contains(Point p) {

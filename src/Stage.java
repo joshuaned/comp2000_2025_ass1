@@ -9,6 +9,7 @@ public class Stage {
   Grid grid;
   List<Actor> actors;
   List<Button> buttons = new ArrayList<Button>();
+  int money = 0;
   
   boolean isPlanting = false;
 
@@ -25,6 +26,10 @@ public class Stage {
     for(Actor a: actors) {
       a.paint(g);
     }
+
+    // always visable UI
+    g.drawString("Money: $" + String.valueOf(money), 740, 15);
+
     Optional<Cell> underMouse = grid.cellAtPoint(mouseLoc);
     if(underMouse.isPresent()) {
       Cell hoverCell = underMouse.get();
@@ -34,8 +39,6 @@ public class Stage {
 
       if(hoverCell.hasPlant()) g.drawString("Planted in cell: " + String.valueOf(hoverCell.plant), 800, 30);
       g.drawString("Placing: ", 800, 45);
-
-      // TODO: planting and collection system
     }
 
     // TODO : make buttons
@@ -50,7 +53,9 @@ public class Stage {
     Optional<Cell> selected =  grid.cellAtPoint(p);
     if(selected.isPresent()) {
       Cell cell = selected.get();
-      cell.plant = new Carrot(cell);
+      if (cell.tilePlantable()) { // check if you can plant there
+        cell.plant = new Carrot(cell);
+      }
     }
   }
 }

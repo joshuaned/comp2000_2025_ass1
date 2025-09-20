@@ -38,6 +38,10 @@ public class Cell extends Rectangle {
     return plant != null;
   }
 
+  public boolean tilePlantable() {
+    return !(tile instanceof Water);
+  }
+
   public void paint(Graphics g, Point mousePos) {
     if(contains(mousePos)) {
       g.setColor(Color.GRAY);

@@ -9,7 +9,8 @@ public class Cell extends Rectangle {
   char col;
   int row;
   Random r = new Random(); // for random num
-  Tile tile;
+  int range = 100;
+  Tile tile; // generic
 
   public Cell(char inCol, int inRow, int x, int y) {
     super(x, y, size, size);
@@ -17,10 +18,10 @@ public class Cell extends Rectangle {
     row = inRow;
 
     // randomly decide the tile type
-    int temp = r.nextInt(2);
+    int temp = r.nextInt(range);
 
-    if(temp == 1) {
-      tile = new Lava(this);
+    if(temp > 0 && temp < range/4) { // 25% it can be water
+      tile = new Water(this);
     } else {
       tile = new Grass(this);
     }

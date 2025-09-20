@@ -1,7 +1,6 @@
 public class Grass extends Tile {
     public Grass(Cell x) {
-        super(false, true);
-        color = color.yellow;
+        color = color.GREEN;
         cell = x;
     }
 }

@@ -11,4 +11,9 @@ public abstract class Tile {
         g.setColor(color);
         g.fillRect(cell.x, cell.y, 35, 35);
     }
+
+    @Override
+    public String toString() {
+        return this.getClass().getSimpleName();
+    }
 }

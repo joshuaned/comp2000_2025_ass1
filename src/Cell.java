@@ -10,6 +10,7 @@ public class Cell extends Rectangle {
   int row;
   int range = 3;
   Tile tile; // generic
+  Plant plant;
 
   public Cell(char inCol, int inRow, int x, int y) {
     super(x, y, size, size);
@@ -20,6 +21,8 @@ public class Cell extends Rectangle {
   }
 
   public void placeTiles() {
+    plant = new Carrot(this); // REMOVE
+
     Random r = new Random(); // for random num
 
     // randomly decide the tile type
@@ -33,6 +36,10 @@ public class Cell extends Rectangle {
     }
   }
 
+  public boolean hasPlant() {
+    return plant != null;
+  }
+
   public void paint(Graphics g, Point mousePos) {
     if(contains(mousePos)) {
       g.setColor(Color.GRAY);
@@ -41,6 +48,8 @@ public class Cell extends Rectangle {
     }
     g.setColor(Color.BLACK);
     g.drawRect(x, y, size, size);
+
+    plant.paint(g); // REMOVE
   }
 
   public boolean contains(Point p) {

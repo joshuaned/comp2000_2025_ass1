@@ -49,7 +49,7 @@ public class Cell extends Rectangle {
     g.setColor(Color.BLACK);
     g.drawRect(x, y, size, size);
 
-    plant.paint(g); // REMOVE
+    if(plant != null) plant.paint(g); // check to see if cell has a plant
   }
 
   public boolean contains(Point p) {

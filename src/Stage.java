@@ -8,6 +8,7 @@ import java.util.Optional;
 public class Stage {
   Grid grid;
   List<Actor> actors;
+  List<Button> buttons = new ArrayList<Button>();
 
   public Stage() {
     grid = new Grid();
@@ -29,7 +30,17 @@ public class Stage {
       g.drawString(String.valueOf(hoverCell.tile), 740, 30);
       g.drawString(String.valueOf(hoverCell.col) + String.valueOf(hoverCell.row), 740, 45);
 
-      if(hoverCell.hasPlant()) g.drawString("Currently planted: " + String.valueOf(hoverCell.plant), 800, 30);
+      if(hoverCell.hasPlant()) g.drawString("Planted in cell: " + String.valueOf(hoverCell.plant), 800, 30);
+      g.drawString("Placing: ", 800, 45);
     }
+
+    // TODO : make buttons
+    buttons.add(new CarrotButton(740, 150));
+
+    for(Button b: buttons) {
+      b.paint(g);
+    }
+
+    // TODO: planting and collection system
   }
 }

@@ -1,11 +1,12 @@
 
 import java.awt.Polygon;
+import java.awt.Rectangle;
 import java.util.ArrayList;
 
 public class Carrot extends Plant {
-    public Carrot(Cell x) {
-        growthTimeMax = 30;
+    public Carrot(Rectangle x) {
         cell = x;
+        growthTimeMax = 30;
         color = color.ORANGE;
 
         display = new ArrayList<Polygon>();

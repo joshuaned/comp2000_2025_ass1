@@ -11,6 +11,8 @@ public class Grid {
         cells[i][j] = new Cell(colToLabel(i), j, 10+Cell.size*i, 10+Cell.size*j);
       }
     }
+
+    // make the buttons
   }
 
   private char colToLabel(int col) {

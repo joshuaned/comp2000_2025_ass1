@@ -26,7 +26,8 @@ public class Stage {
     if(underMouse.isPresent()) {
       Cell hoverCell = underMouse.get();
       g.setColor(Color.DARK_GRAY);
-      g.drawString(String.valueOf(hoverCell.col) + String.valueOf(hoverCell.row), 740, 30);
+      g.drawString(String.valueOf(hoverCell.tile.getClass().getSimpleName()), 740, 30);
+      g.drawString(String.valueOf(hoverCell.col) + String.valueOf(hoverCell.row), 740, 45);
     }
   }
 }

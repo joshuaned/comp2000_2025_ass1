@@ -8,8 +8,7 @@ public class Cell extends Rectangle {
   static int size = 35;
   char col;
   int row;
-  Random r = new Random(); // for random num
-  int range = 100;
+  int range = 3;
   Tile tile; // generic
 
   public Cell(char inCol, int inRow, int x, int y) {
@@ -17,13 +16,20 @@ public class Cell extends Rectangle {
     col = inCol;
     row = inRow;
 
+    placeTiles();
+  }
+
+  public void placeTiles() {
+    Random r = new Random(); // for random num
+
     // randomly decide the tile type
     int temp = r.nextInt(range);
 
-    if(temp > 0 && temp < range/4) { // 25% it can be water
-      tile = new Water(this);
-    } else {
-      tile = new Grass(this);
+    switch(temp) {
+      case 0 -> tile = new Grass(this);
+      case 1 -> tile = new Farmland(this);
+      case 2 -> tile = new Water(this);
+      default -> System.out.println("Tile type out of range");
     }
   }
 

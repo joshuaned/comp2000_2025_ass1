@@ -9,6 +9,8 @@ public class Stage {
   Grid grid;
   List<Actor> actors;
   List<Button> buttons = new ArrayList<Button>();
+  
+  boolean isPlanting = false;
 
   public Stage() {
     grid = new Grid();
@@ -32,15 +34,23 @@ public class Stage {
 
       if(hoverCell.hasPlant()) g.drawString("Planted in cell: " + String.valueOf(hoverCell.plant), 800, 30);
       g.drawString("Placing: ", 800, 45);
+
+      // TODO: planting and collection system
     }
 
     // TODO : make buttons
-    buttons.add(new CarrotButton(740, 150));
+    buttons.add(new CarrotButton(740, 150, 0));
 
     for(Button b: buttons) {
       b.paint(g);
     }
+  }
 
-    // TODO: planting and collection system
+  public void mouseClicked(Point p) {
+    Optional<Cell> selected =  grid.cellAtPoint(p);
+    if(selected.isPresent()) {
+      Cell cell = selected.get();
+      cell.plant = new Carrot(cell);
+    }
   }
 }

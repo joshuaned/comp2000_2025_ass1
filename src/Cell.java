@@ -21,8 +21,6 @@ public class Cell extends Rectangle {
   }
 
   public void placeTiles() {
-    plant = new Carrot(this); // REMOVE
-
     Random r = new Random(); // for random num
 
     // randomly decide the tile type

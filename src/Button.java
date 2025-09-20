@@ -4,9 +4,11 @@ import java.awt.Rectangle;
 
 public class Button extends Rectangle {
     Plant plant;
+    int index;
 
-    public Button(int x, int y) {
+    public Button(int x, int y, int z) {
         super(x, y, 100, 50);
+        index = z;
     }
 
     public void paint(Graphics g) {
@@ -17,6 +19,7 @@ public class Button extends Rectangle {
         g.drawRect(x, y, width, height);
 
         g.drawString(String.valueOf(plant), x + width/3, y + height/4);
+        g.drawString("$ " + String.valueOf(plant.price), x + width/3, y + height/2);
         plant.paint(g);
     }
 }

@@ -7,6 +7,7 @@ public class Carrot extends Plant {
     public Carrot(Rectangle x) {
         cell = x;
         growthTimeMax = 30;
+        price = 10;
         color = color.ORANGE;
 
         display = new ArrayList<Polygon>();

@@ -7,6 +7,7 @@ import java.util.List;
 public abstract class Plant {
     int growthTimeMax;
     int growthTime = 0;
+    int price;
     Rectangle cell;
     Color color;
     List<Polygon> display;

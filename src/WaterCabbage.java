@@ -5,10 +5,7 @@ import java.util.ArrayList;
 public class WaterCabbage extends Plant {
 
     public WaterCabbage(Rectangle x) {
-        cell = x;
-        growthTimeMax = 25;
-        price = 20;
-        sellValue = 35;
+        super(x, 25, 20, 35);
         color = color.CYAN;
         waterPlant = true; // this is a water plant
 

@@ -5,10 +5,7 @@ import java.util.ArrayList;
 
 public class Carrot extends Plant {
     public Carrot(Rectangle x) {
-        cell = x;
-        growthTimeMax = 15;
-        price = 10;
-        sellValue = 15;
+        super(x, 15, 10, 15);
         color = color.ORANGE;
 
         display = new ArrayList<Polygon>();

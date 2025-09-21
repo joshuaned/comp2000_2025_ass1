@@ -4,7 +4,7 @@ import java.awt.Polygon;
 import java.awt.Rectangle;
 import java.util.List;
 
-public abstract class Plant {
+public abstract class Plant implements PlantInterface {
     float growthTimeMax = 30;
     float growthTime = 0;
     int price = 0;
@@ -13,8 +13,15 @@ public abstract class Plant {
     boolean isGrown = false;
 
     Rectangle cell;
-    Color color;
+    Color color = Color.BLACK;
     List<Polygon> display;
+
+    public Plant(Rectangle x, float y, int z, int a) {
+        cell = x;
+        growthTimeMax = y;
+        price = z;
+        sellValue = a;
+    }
 
     public void paint(Graphics g) {
         // draw the plant
@@ -28,6 +35,7 @@ public abstract class Plant {
         grow();
     }
 
+    @Override
     public void grow() {
         if(growthTime >= growthTimeMax * 60) {
             isGrown = true;

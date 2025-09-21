@@ -5,6 +5,7 @@ import java.awt.Rectangle;
 
 public abstract class Button extends Rectangle {
     Plant plant;
+    boolean isClicked;
     int index;
 
     public Button(int x, int y, int z) {
@@ -23,15 +24,19 @@ public abstract class Button extends Rectangle {
         g.setColor(Color.BLACK);
         g.drawRect(x, y, width, height);
 
-        g.drawString(String.valueOf(plant), x + width/3, y + height/4);
-        g.drawString("$ " + String.valueOf(plant.price), x + width/3, y + height/2);
-        g.drawString("Type: " + (plant.waterPlant ? "Water" : "Land"), x + width/3, y + height/4*3 - 3);
-        g.drawString("Growth time: " + String.valueOf(plant.growthTimeMax), x + width/3, y + height - 3);
-        plant.paint(g);
+        if (plant != null) {
+            g.drawString(String.valueOf(plant), x + width/3, y + height/4);
+            g.drawString("$ " + String.valueOf(plant.price), x + width/3, y + height/2);
+            g.drawString("Type: " + (plant.waterPlant ? "Water" : "Land"), x + width/3, y + height/4*3 - 3);
+            g.drawString("Growth time: " + String.valueOf(plant.growthTimeMax), x + width/3, y + height - 3);
+            plant.paint(g);
+        } else {
+            g.drawString("Collect Mode", x + width/3 - 10, y + height/2);
+        }
     }
 
     public void mouseClicked() {
-        System.out.println("BUTTON CLICKED!!!");
+        isClicked = !isClicked;
     }
 
     @Override

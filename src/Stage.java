@@ -12,6 +12,7 @@ public class Stage {
   int money = 0;
   
   boolean isPlanting = false;
+  Button currentMode;
 
   public Stage() {
     grid = new Grid();
@@ -29,7 +30,7 @@ public class Stage {
 
     // always visable UI
     g.drawString("Money: $" + String.valueOf(money), 740, 15);
-    g.drawString("Placing: " + String.valueOf(money), 820, 15);
+    //g.drawString("Placing: " + String.valueOf(currentMode), 820, 15);
 
     Optional<Cell> underMouse = grid.cellAtPoint(mouseLoc);
     if(underMouse.isPresent()) {
@@ -44,8 +45,9 @@ public class Stage {
     }
 
     // TODO : make buttons
-    buttons.add(new CarrotButton(740, 150, 0));
-    buttons.add(new WaterCabbageButton(890, 150, 1));
+    buttons.add(new CollectButton(815, 80, 0));
+    buttons.add(new CarrotButton(740, 150, 1));
+    buttons.add(new WaterCabbageButton(890, 150, 2));
 
     for(Button b: buttons) {
       b.paint(g, mouseLoc);
@@ -53,18 +55,20 @@ public class Stage {
   }
 
   public void mouseClicked(Point p) {
-    // Optional<Cell> selected =  grid.cellAtPoint(p);
-    // if(selected.isPresent()) {
-    //   Cell cell = selected.get();
-    //   if (cell.tilePlantable(true)) { // check if you can plant there
-    //     cell.placePlant(0);
-    //   }
-    // }
+    Optional<Cell> selected =  grid.cellAtPoint(p);
+    if(selected.isPresent()) {
+      Cell cell = selected.get();
+      if (cell.tilePlantable(true) && buttons.get(0).isClicked) { // check if you can plant there
+        cell.placePlant(0);
+      }
+    }
 
-    Optional<Button> selected = buttonAtPoint(p);
-    if(selected.isPresent()){
-      Button button = selected.get();
+    // toggle is clicked
+    Optional<Button> selectedButton = buttonAtPoint(p);
+    if(selectedButton.isPresent()){
+      Button button = selectedButton.get();
       button.mouseClicked();
+      
     }
   }
 

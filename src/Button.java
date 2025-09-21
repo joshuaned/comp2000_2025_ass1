@@ -5,12 +5,9 @@ import java.awt.Rectangle;
 
 public abstract class Button extends Rectangle {
     Plant plant;
-    boolean isClicked;
-    int index;
 
-    public Button(int x, int y, int z) {
+    public Button(int x, int y) {
         super(x, y, 140, 60);
-        index = z;
     }
 
     public void paint(Graphics g, Point mousePos) {
@@ -35,16 +32,20 @@ public abstract class Button extends Rectangle {
         }
     }
 
-    public void mouseClicked() {
-        isClicked = !isClicked;
-    }
-
     @Override
     public boolean contains(Point p) {
         if(p != null) {
             return super.contains(p);
         } else {
             return false;
+        }
+    }
+
+    public String toString(){
+        if (plant == null) {
+            return "Collecting";
+        } else {
+            return ("Planting " + String.valueOf(plant));
         }
     }
 }

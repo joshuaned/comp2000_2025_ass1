@@ -11,15 +11,21 @@ public class Stage {
   List<Button> buttons = new ArrayList<Button>();
   int money = 0;
   
-  boolean isPlanting = false;
-  Button currentMode;
+  Button currentMode; // keep track of current button
 
   public Stage() {
     grid = new Grid();
     actors = new ArrayList<Actor>();
     //actors.add(new Cat(grid.cellAtColRow(0, 0).get()));
     //actors.add(new Dog(grid.cellAtColRow(0, 15).get()));
-    //actors.add(new Bird(grid.cellAtColRow(12, 9).get()));    
+    //actors.add(new Bird(grid.cellAtColRow(12, 9).get()));
+    
+    // create buttons and assign index
+    buttons.add(new CollectButton(815, 80));
+    buttons.add(new CarrotButton(740, 150));
+    buttons.add(new WaterCabbageButton(890, 150));
+
+    currentMode = buttons.get(0);
   }
 
   public void paint(Graphics g, Point mouseLoc) {
@@ -30,7 +36,7 @@ public class Stage {
 
     // always visable UI
     g.drawString("Money: $" + String.valueOf(money), 740, 15);
-    //g.drawString("Placing: " + String.valueOf(currentMode), 820, 15);
+    g.drawString(String.valueOf(currentMode), 820, 15);
 
     Optional<Cell> underMouse = grid.cellAtPoint(mouseLoc);
     if(underMouse.isPresent()) {
@@ -44,31 +50,25 @@ public class Stage {
       }
     }
 
-    // TODO : make buttons
-    buttons.add(new CollectButton(815, 80, 0));
-    buttons.add(new CarrotButton(740, 150, 1));
-    buttons.add(new WaterCabbageButton(890, 150, 2));
-
     for(Button b: buttons) {
       b.paint(g, mouseLoc);
     }
   }
 
   public void mouseClicked(Point p) {
-    Optional<Cell> selected =  grid.cellAtPoint(p);
-    if(selected.isPresent()) {
-      Cell cell = selected.get();
-      if (cell.tilePlantable(true) && buttons.get(0).isClicked) { // check if you can plant there
-        cell.placePlant(0);
-      }
-    }
+    // Optional<Cell> selected =  grid.cellAtPoint(p);
+    // if(selected.isPresent()) {
+    //   Cell cell = selected.get();
+    //   if (cell.tilePlantable(true) && buttons.get(0).isClicked) { // check if you can plant there
+    //     cell.placePlant(0);
+    //   }
+    // }
 
     // toggle is clicked
     Optional<Button> selectedButton = buttonAtPoint(p);
     if(selectedButton.isPresent()){
       Button button = selectedButton.get();
-      button.mouseClicked();
-      
+      currentMode = button;
     }
   }
 

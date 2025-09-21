@@ -1,7 +1,7 @@
 public class WaterCabbageButton extends Button {
 
-    public WaterCabbageButton(int x, int y, int z) {
-        super(x, y, z);
+    public WaterCabbageButton(int x, int y) {
+        super(x, y);
         plant = new WaterCabbage(this);
     }
 }

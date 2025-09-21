@@ -14,7 +14,10 @@ I added items in the game in the form of plants that can be sown and harvested\
 And I finished up the basic game loop with a couple of crops to choose from, it should be quite expandable
 
 ### How to run my program
-This program was designed in Java 21. You can run the program from main.\
+This program was designed in Java 21. You should use this.\
+To run the program, you can use Visual Studio or any other kind of software capable of running Java projects.\
+The project should be run from Main.java; it must also have access to all the other Java files in src.\
+In Visual Studio Code, you need to have a compiler selected and installed, then you can open Main.java from the explorer and click the run button.\
 Game playing instructions are above ^^^ (under Game outline)
 
 ## How I utilised Inheritance

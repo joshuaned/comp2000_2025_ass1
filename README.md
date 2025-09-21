@@ -21,10 +21,17 @@ I created three main abstract classes that allow the efficent use of inheritence
 The superclass Tile, which is set as abstract for the reason it is not to be directly used as an object itself, has a few children in this project, being Water.java, Grass.java, and Farmland.java.\
 Since the children of Tile.java will all be very similar, just with little changes, cell can instead of containing all the variables and methods of the tiles, can create new objects instead.
 
+#### How Inheritence supports good design
+In my program, by utilising inheritence and creating objects that inherit from a so called, super class, being my abstract classes, allows me to avoid rewriting code for every single land tile I want to create, this is the same with the plants and buttons.\
+Since they are all very similar they can reuse the same code, and just super(data) into the abstract classes constructor. They can also directly set variables that don't always need to be set.
+
 Plant.java implements PlantInterface.java as all Plant classes must contain the method grow(), as all plants in this game are expected to grow, this makes sure that if I or anyone else worked on the project again, it is easily understood that if more Plant superclasses are to be made, for example if the plants were to have different functions and we needed to create WaterPlant.java SandPlant.java, ect... they must all have grow if they are to implement PlantInterface.java.
+#### How Inheritence supports good design
 
 ## How I utilised Generics
 Within many of my classes I tend to use generics instead of using the exact type.\
 For example, in Plant.java my abstract class, I make cell use Rectangle instead of Cell, because it allows more room with what I put into it.\
 Since Cell inherits from Rectangle, it allows me to not allow put rectangles into cell but also Cell.\
 This is useful for my program and future design implementations as for example, in the Button.java abstract class, I want to get information and data from a perticular plant, however the button is not a Cell, which could cause issues if the type was only Cell cell. But since Button extends Rectangle, it allows me to also create a 'dummy' plant to get the info from for my button, and can take the simple x, y, positioning from the object as it is a rectangle.
+#### How Generics support good design
+In my project Generics allow me to input a variety of fields/objects into my variables. For example instead of making a 

@@ -25,7 +25,8 @@ I created a Button abstract superclass because the buttons would be slightly dif
 Since the button also uses x, y, width and height, I simply extended Rectangle to inherit its variables. I could also use its pre-existing contains method for checking if the player is hovering over the button.\
 I created a Plant abstract superclass, as all the plants will also be very similar; this is the general idea of inheritance.
 If I want to add more plants, buttons, or tile variants, I don't have to rewrite a lot of code, as I only really need to use the parent's constructor through super(), then input the variables I want.\
-So by using Inheritance in my project, I have made it almost infinitely expandable, with the need to write very little code to do so.
+So by using Inheritance in my project, I have made it almost infinitely expandable, with the need to write very little code to do so.\
+The superclasses also all contain their own paint method, so it can be easily called when needed.
 
 #### How Inheritance supports good design
 In my program, by utilising inheritance and creating objects that inherit from a so-called super class, being my abstract classes, allows me to avoid rewriting code for every single land tile I want to create; this is the same with the plants and buttons.\

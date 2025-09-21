@@ -12,6 +12,10 @@ I created an auto generated landscapes system\
 I added items in the game in the form of plants that can be sown and harvested\
 And I finished up the basic game loop with a couple crops to choose from, it should be quite expandable
 
+### How to run my program
+This program was designed in Java 21, you can run the program from main.\
+Game instructions are above ^^^
+
 ## How I utilised Inheritence and Interfaces
 I created three main abstract classes that allow the efficent use of inheritence for easily adding new plants to the game, and new kinds of tiles.\
 The superclass Tile, which is set as abstract for the reason it is not to be directly used as an object itself, has a few children in this project, being Water.java, Grass.java, and Farmland.java.\

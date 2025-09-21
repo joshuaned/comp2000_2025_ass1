@@ -5,6 +5,7 @@ public abstract class Tile {
     // var
     Color color;
     Cell cell;
+    boolean isWater = false;
 
     // method
     public void paint(Graphics g) {

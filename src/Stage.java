@@ -57,20 +57,23 @@ public class Stage {
   }
 
   public void mouseClicked(Point p) {
-    // TODO: put plant into cell depending on currentMode
-    Optional<Cell> selected =  grid.cellAtPoint(p);
-    if(selected.isPresent()) {
-      Cell cell = selected.get();
-      if(!(currentMode instanceof CollectButton)) {
-        cell.plant = currentMode.makePlant(cell);
-      } 
-    }
-
-    // toggle is clicked
+    // toggle is clicked in button
     Optional<Button> selectedButton = buttonAtPoint(p);
     if(selectedButton.isPresent()){
       Button button = selectedButton.get();
       currentMode = button;
+    }
+
+    // put plant into cell depending on currentMode
+    Optional<Cell> selected =  grid.cellAtPoint(p);
+    if(selected.isPresent()) {
+      Cell cell = selected.get();
+      if(!(currentMode instanceof CollectButton)) { // all other buttons will house instances of plant
+        // check if its a water plant
+        if(cell.tile.isWater && currentMode.plant.waterPlant || !cell.tile.isWater && !currentMode.plant.waterPlant) {
+          cell.plant = currentMode.makePlant(cell);
+        }
+      } 
     }
   }
 

@@ -33,11 +33,6 @@ public abstract class Button extends Rectangle {
 
     // this allows the buttons to make new plants
     public Plant makePlant(Rectangle x) {
-        // check if its a water plant
-        if (plant.waterPlant) {
-
-        }
-
         try {
             return plant.getClass().getDeclaredConstructor(Rectangle.class).newInstance(x);
         } catch (Exception e) {

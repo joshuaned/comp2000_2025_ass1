@@ -1,5 +1,5 @@
 ## Game outline
-I wanted to do something a little different then whats probably going to be just moving characters and picking up items, so I made a farming game.
+I wanted to do something a little different then the standard expansion, which is probably going to be just moving characters and picking up items, so I made a farming game.
 
 I turned the given project into a farming game using inheritance, interfaces, and generics.\
 You start with $10 and are able to select crops and place them on their respective tile type.\
@@ -19,7 +19,12 @@ Game instructions are above ^^^
 ## How I utilised Inheritence and Interfaces
 I created three main abstract classes that allow the efficent use of inheritence for easily adding new plants to the game, and new kinds of tiles.\
 The superclass Tile, which is set as abstract for the reason it is not to be directly used as an object itself, has a few children in this project, being Water.java, Grass.java, and Farmland.java.\
-Since the children of Tile.java will all be very similar, just with little changes, cell can instead of containing all the variables and methods of the tiles, can create new objects instead.
+Since the children of Tile.java will all be very similar, just with little changes, cell can instead of containing all the variables and methods of the tiles, can create new objects instead.\
+I created a Button abstract superclass, as the buttons would be a little different from the cells, and as they are to be reused as objects with similar functions, this was the best way to do it.\
+Since the button also like Cell uses x, y, width and heigh, I simply extended Rectangle to inherit its variables. I could also use its pre-exisiting contains method for checking if the player is hovering over the button.\
+I created a Plant abstract superclass, as all the plants will also be very similar, this is the general idea of inheritence.
+If I to add more plants, buttons, or tile varients, I don't have to rewrite alot of code, as I only really need to use the parents constructer through super(), then input the variables I want.\
+So by using Inheritence in my project, I have made it almost infinatly expandable, with the need to write very little code to do so.
 
 #### How Inheritence supports good design
 In my program, by utilising inheritence and creating objects that inherit from a so called, super class, being my abstract classes, allows me to avoid rewriting code for every single land tile I want to create, this is the same with the plants and buttons.\
@@ -36,4 +41,5 @@ For example, in Plant.java my abstract class, I make cell use Rectangle instead 
 Since Cell inherits from Rectangle, it allows me to not allow put rectangles into cell but also Cell.\
 This is useful for my program and future design implementations as for example, in the Button.java abstract class, I want to get information and data from a perticular plant, however the button is not a Cell, which could cause issues if the type was only Cell cell. But since Button extends Rectangle, it allows me to also create a 'dummy' plant to get the info from for my button, and can take the simple x, y, positioning from the object as it is a rectangle.
 #### How Generics support good design
-In my project Generics allow me to input a variety of fields/objects into my variables. For example instead of making a 
+In my project Generics allow me to input a variety of fields/objects into my variables. For example, instead of being stuck with only a variable that can hold an ArrayList, I can make it use the generic of List, so if I decided to create a different kind of list, I could do so.
+This allows flexability in programming for the developer.

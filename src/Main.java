@@ -2,6 +2,8 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.time.Duration;
+import java.time.Instant;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -14,7 +16,7 @@ public class Main extends JFrame {
     class Canvas extends JPanel implements MouseListener {
       Stage stage = new Stage();
       public Canvas() {
-        setPreferredSize(new Dimension(1024, 720));
+        setPreferredSize(new Dimension(1044, 720)); // increased slightly for buttons
         this.addMouseListener(this);
       }
 
@@ -51,7 +53,17 @@ public class Main extends JFrame {
 
     public void run() {
       while(true) {
+        Instant startTime = Instant.now();
         repaint();
+        Instant endTime = Instant.now();
+        long howLong = Duration.between(startTime, endTime).toMillis();
+        try{
+          Thread.sleep(16 - howLong); // aprox 60 fps
+        } catch(InterruptedException e) {
+          System.out.println("Thread was interrupted, this is probably fine!");
+        } catch(IllegalArgumentException e) {
+          System.out.println("Application can't keep up with the framerate...");
+        }
       }
     }
 }

@@ -36,6 +36,10 @@ public class Cell extends Rectangle {
 
   public void placePlant(int x) {
     //TODO: create planting system
+    switch(x) {
+      case 0 -> plant = new Carrot(this);
+      default -> System.out.println("Plant type out of range");
+    }
   }
 
   public boolean hasPlant() {
@@ -61,6 +65,7 @@ public class Cell extends Rectangle {
     if(plant != null) plant.paint(g); // check to see if cell has a plant
   }
 
+  @Override
   public boolean contains(Point p) {
     if(p != null) {
       return super.contains(p);

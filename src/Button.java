@@ -1,10 +1,10 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.Rectangle;
 
-public class Button extends Rectangle {
+public abstract class Button extends Rectangle {
     Plant plant;
-    boolean isClicked = false;
     int index;
 
     public Button(int x, int y, int z) {
@@ -12,9 +12,9 @@ public class Button extends Rectangle {
         index = z;
     }
 
-    public void paint(Graphics g) {
+    public void paint(Graphics g, Point mousePos) {
         // TODO: paint the button, make it display the text, also display the poly
-        if (isClicked) {
+        if (contains(mousePos)) {
             g.setColor(Color.GRAY);
         } else {
             g.setColor(Color.WHITE);
@@ -31,6 +31,15 @@ public class Button extends Rectangle {
     }
 
     public void mouseClicked() {
-        isClicked = !isClicked; // toggle button
+        System.out.println("BUTTON CLICKED!!!");
+    }
+
+    @Override
+    public boolean contains(Point p) {
+        if(p != null) {
+            return super.contains(p);
+        } else {
+            return false;
+        }
     }
 }

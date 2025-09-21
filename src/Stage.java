@@ -38,26 +38,43 @@ public class Stage {
       g.drawString(String.valueOf(hoverCell.tile), 740, 30);
       g.drawString(String.valueOf(hoverCell.col) + String.valueOf(hoverCell.row), 740, 45);
 
-      if(hoverCell.hasPlant()) g.drawString("Planted in cell: " + String.valueOf(hoverCell.plant), 800, 30);
+      if(hoverCell.hasPlant()){
+        g.drawString("Planted: " + String.valueOf(hoverCell.plant), 800, 30);
+      }
     }
 
     // TODO : make buttons
     buttons.add(new CarrotButton(740, 150, 0));
+    buttons.add(new WaterCabbageButton(890, 150, 1));
 
     for(Button b: buttons) {
-      b.paint(g);
+      b.paint(g, mouseLoc);
     }
   }
 
   public void mouseClicked(Point p) {
-    Optional<Cell> selected =  grid.cellAtPoint(p);
-    if(selected.isPresent()) {
-      Cell cell = selected.get();
-      if (cell.tilePlantable(true)) { // check if you can plant there
-        cell.plant = new Carrot(cell);
+    // Optional<Cell> selected =  grid.cellAtPoint(p);
+    // if(selected.isPresent()) {
+    //   Cell cell = selected.get();
+    //   if (cell.tilePlantable(true)) { // check if you can plant there
+    //     cell.placePlant(0);
+    //   }
+    // }
+
+    Optional<Button> selected = buttonAtPoint(p);
+    if(selected.isPresent()){
+      Button button = selected.get();
+      button.mouseClicked();
+    }
+  }
+
+  // see if a button is at point
+  public Optional<Button> buttonAtPoint(Point p) {
+    for(Button b: buttons) {
+      if (b.contains(p)) {
+        return Optional.of(b);
       }
     }
-
-
+    return Optional.empty();
   }
 }

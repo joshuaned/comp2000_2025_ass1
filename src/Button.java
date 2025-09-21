@@ -7,7 +7,7 @@ public abstract class Button extends Rectangle {
     Plant plant;
 
     public Button(int x, int y) {
-        super(x, y, 140, 60);
+        super(x, y, 150, 60);
     }
 
     public void paint(Graphics g, Point mousePos) {

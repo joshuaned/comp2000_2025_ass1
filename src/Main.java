@@ -16,7 +16,7 @@ public class Main extends JFrame {
     class Canvas extends JPanel implements MouseListener {
       Stage stage = new Stage();
       public Canvas() {
-        setPreferredSize(new Dimension(1044, 720)); // increased slightly for buttons
+        setPreferredSize(new Dimension(1064, 720)); // increased slightly for buttons
         this.addMouseListener(this);
       }
 

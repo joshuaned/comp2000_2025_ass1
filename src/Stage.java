@@ -1,4 +1,3 @@
-import com.sun.source.tree.InstanceOfTree;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -10,21 +9,21 @@ public class Stage {
   Grid grid;
   List<Actor> actors;
   List<Button> buttons = new ArrayList<Button>();
-  int money = 0;
+  int money = 10;
   
   Button currentMode; // keep track of current button
 
   public Stage() {
     grid = new Grid();
     actors = new ArrayList<Actor>();
-    //actors.add(new Cat(grid.cellAtColRow(0, 0).get()));
-    //actors.add(new Dog(grid.cellAtColRow(0, 15).get()));
-    //actors.add(new Bird(grid.cellAtColRow(12, 9).get()));
+    actors.add(new Cat(grid.cellAtColRow(0, 0).get()));
+    actors.add(new Dog(grid.cellAtColRow(0, 15).get()));
+    actors.add(new Bird(grid.cellAtColRow(12, 9).get()));
     
     // create buttons and assign index
     buttons.add(new CollectButton(815, 80));
     buttons.add(new CarrotButton(740, 150));
-    buttons.add(new WaterCabbageButton(890, 150));
+    buttons.add(new WaterCabbageButton(900, 150));
 
     currentMode = buttons.get(0);
   }
@@ -48,6 +47,11 @@ public class Stage {
 
       if(hoverCell.hasPlant()){
         g.drawString("Planted: " + String.valueOf(hoverCell.plant), 800, 30);
+        if (hoverCell.plant.isGrown) {
+          g.drawString("Ready to harvest!", 800, 45);
+        } else {
+          g.drawString("Time until grown: " + String.valueOf(Math.round(hoverCell.plant.growthTimeMax - hoverCell.plant.growthTime/60)), 800, 45);
+        }
       }
     }
 
@@ -71,11 +75,13 @@ public class Stage {
       if(!(currentMode instanceof CollectButton)) { // all other buttons will house instances of plant
         // check if its a water plant
         boolean tileCheck = (cell.tile.isWater && currentMode.plant.waterPlant || !cell.tile.isWater && !currentMode.plant.waterPlant);
-        if(tileCheck) {
+        if(tileCheck && money >= currentMode.plant.price) {
           cell.plant = currentMode.makePlant(cell);
+          money -= cell.plant.price;
         }
-      } else if (currentMode instanceof CollectButton && cell.plant != null) {
+      } else if (currentMode instanceof CollectButton && cell.hasPlant()) {
         if (cell.plant.isGrown) {
+          money += cell.plant.sellValue;
           cell.plant = null;
         }
       }

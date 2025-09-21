@@ -5,9 +5,10 @@ import java.awt.Rectangle;
 import java.util.List;
 
 public abstract class Plant {
-    int growthTimeMax = 30;
-    int growthTime = 0;
-    int price;
+    float growthTimeMax = 30;
+    float growthTime = 0;
+    int price = 0;
+    int sellValue = 0;
     boolean waterPlant = false;
     boolean isGrown = false;
 
@@ -28,7 +29,7 @@ public abstract class Plant {
     }
 
     public void grow() {
-        if(growthTime >= growthTimeMax) {
+        if(growthTime >= growthTimeMax * 60) {
             isGrown = true;
             return;
         } else if (isGrown) {

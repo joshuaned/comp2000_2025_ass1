@@ -6,8 +6,9 @@ public class WaterCabbage extends Plant {
 
     public WaterCabbage(Rectangle x) {
         cell = x;
-        growthTimeMax = 60;
-        price = 10;
+        growthTimeMax = 25;
+        price = 20;
+        sellValue = 35;
         color = color.CYAN;
         waterPlant = true; // this is a water plant
 

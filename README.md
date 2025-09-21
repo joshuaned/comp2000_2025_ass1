@@ -15,7 +15,7 @@ And I finished up the basic game loop with a couple of crops to choose from, it 
 
 ### How to run my program
 This program was designed in Java 21. You can run the program from main.\
-Game instructions are above ^^^
+Game playing instructions are above ^^^ (under Game outline)
 
 ## How I utilised Inheritance and Interfaces
 I created three main abstract classes that allow the efficient use of inheritance for easily adding new plants to the game, new kinds of tiles, and new buttons.\

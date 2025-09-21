@@ -18,7 +18,7 @@ This program was designed in Java 21. You can run the program from main.\
 Game instructions are above ^^^
 
 ## How I utilised Inheritance and Interfaces
-I created three main abstract classes that allow the efficient use of inheritance for easily adding new plants to the game, and new kinds of tiles.\
+I created three main abstract classes that allow the efficient use of inheritance for easily adding new plants to the game, new kinds of tiles, and new buttons.\
 The superclass Tile, which is set as abstract for the reason that it is not to be directly used as an object itself, has a few children in this project, being Water.java, Grass.java, and Farmland.java.\
 Since the children of Tile.java will all be very similar, just with little changes, the cell can, instead of containing all the variables and methods of the tiles, create new objects instead.\
 I created a Button abstract superclass because the buttons would be slightly different from the cells, and since they are to be reused as objects with similar functions, this was the best approach.\
@@ -32,6 +32,7 @@ In my program, by utilising inheritance and creating objects that inherit from a
 Since they are all very similar, they can reuse the same code, and just super(data) into the abstract class's constructor. They can also directly set variables that don't always need to be set.
 
 Plant.java implements PlantInterface.java as all Plant classes must contain the method grow(), as all plants in this game are expected to grow, this makes sure that if I or anyone else worked on the project again, it is easily understood that if more Plant superclasses are to be made, for example if the plants were to have different functions and we needed to create WaterPlant.java SandPlant.java, ect... they must all have grow if they are to implement PlantInterface.java.
+
 #### How Interfaces Support Good Design
 Interfaces allow a developer to enforce methods into a class, with the design of my project I didn't use many interfaces as they weren’t necessary with what needed to be achieved, however I did create a PlantInterface.java, which by implementing it into Plant.java sets an expectation that Plant should have the method grow, this is useful since all plants should have this function, as to grow.\
 If I created more abstract plant classes, I could continue to use this interface to ensure they all implement grow(), which also provides other developers with information about the class at a glance; in this case, they will see that all plants must grow.
@@ -41,6 +42,8 @@ Within many of my classes, I tend to use generics instead of using the exact typ
 For example, in Plant.java, my abstract class, I make the cell use Rectangle instead of Cell, because it allows more room for what I put into it.\
 Since Cell inherits from Rectangle, it allows me to not only put rectangles into cell but also Cell.\
 This is useful for my program and future design implementations, for example, in the Button.java abstract class, I want to get information and data from a particular plant; however, the button is not a Cell, which could cause issues if the type were only Cell. But since Button extends Rectangle, it allows me to also create a 'dummy' plant to get the info from for my button, and can take the simple x, y, positioning from the object as it is a rectangle.
+Additionally, generics also provide a kind of safety next for using similar types. When I initially used Cell cell, instead of Rectangle cell, I had errors when passing in a rectangle, as the children of Button are not Cells.
+
 #### How Generics support good design
 In my project, Generics allow me to input a variety of fields/objects into my variables. For example, instead of being limited to a variable that can only hold an ArrayList, I can use the generic List, allowing me to create a different kind of list if needed.
 This allows flexibility in programming for the developer.

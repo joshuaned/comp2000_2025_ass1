@@ -26,7 +26,9 @@ In my program, by utilising inheritence and creating objects that inherit from a
 Since they are all very similar they can reuse the same code, and just super(data) into the abstract classes constructor. They can also directly set variables that don't always need to be set.
 
 Plant.java implements PlantInterface.java as all Plant classes must contain the method grow(), as all plants in this game are expected to grow, this makes sure that if I or anyone else worked on the project again, it is easily understood that if more Plant superclasses are to be made, for example if the plants were to have different functions and we needed to create WaterPlant.java SandPlant.java, ect... they must all have grow if they are to implement PlantInterface.java.
-#### How Inheritence supports good design
+#### How Interfaces support good design
+Interfaces allow a developer to enforce methods into a class, with the design of my project I didn't use many interfaces as they wern't necessary with what needed to be achieved, however I did create a PlantInterface.java, which by implementing it into Plant.java sets an expectation that Plant should have the method grow, this is useful since all plants should have this function, as to grow.\
+If i created more abstract plant classes, I could continue to use this interface to ensure they all implement grow(), it also provides other developers information into the class at a glance, in this case they will see all plants must grow.
 
 ## How I utilised Generics
 Within many of my classes I tend to use generics instead of using the exact type.\

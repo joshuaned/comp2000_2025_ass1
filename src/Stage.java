@@ -1,3 +1,4 @@
+import com.sun.source.tree.InstanceOfTree;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
@@ -56,13 +57,14 @@ public class Stage {
   }
 
   public void mouseClicked(Point p) {
-    // Optional<Cell> selected =  grid.cellAtPoint(p);
-    // if(selected.isPresent()) {
-    //   Cell cell = selected.get();
-    //   if (cell.tilePlantable(true) && buttons.get(0).isClicked) { // check if you can plant there
-    //     cell.placePlant(0);
-    //   }
-    // }
+    // TODO: put plant into cell depending on currentMode
+    Optional<Cell> selected =  grid.cellAtPoint(p);
+    if(selected.isPresent()) {
+      Cell cell = selected.get();
+      if(!(currentMode instanceof CollectButton)) {
+        cell.plant = currentMode.makePlant(cell);
+      } 
+    }
 
     // toggle is clicked
     Optional<Button> selectedButton = buttonAtPoint(p);

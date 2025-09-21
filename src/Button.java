@@ -11,7 +11,6 @@ public abstract class Button extends Rectangle {
     }
 
     public void paint(Graphics g, Point mousePos) {
-        // TODO: paint the button, make it display the text, also display the poly
         if (contains(mousePos)) {
             g.setColor(Color.GRAY);
         } else {
@@ -29,6 +28,21 @@ public abstract class Button extends Rectangle {
             plant.paint(g);
         } else {
             g.drawString("Collect Mode", x + width/3 - 10, y + height/2);
+        }
+    }
+
+    // this allows the buttons to make new plants
+    public Plant makePlant(Rectangle x) {
+        // check if its a water plant
+        if (plant.waterPlant) {
+
+        }
+
+        try {
+            return plant.getClass().getDeclaredConstructor(Rectangle.class).newInstance(x);
+        } catch (Exception e) {
+            System.out.println("There was an issue creating a new instance of the plant.");
+            return null;
         }
     }
 

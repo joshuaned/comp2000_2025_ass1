@@ -7,6 +7,13 @@ public abstract class Tile {
     Cell cell;
     boolean isWater = false;
 
+    float growthBoost = 0;
+
+    public Tile(Cell x, Color y) {
+        cell = x;
+        color = y;
+    }
+
     // method
     public void paint(Graphics g) {
         g.setColor(color);

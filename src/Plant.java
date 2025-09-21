@@ -12,6 +12,8 @@ public abstract class Plant implements PlantInterface {
     boolean waterPlant = false;
     boolean isGrown = false;
 
+    float growthMultiplier = 1;
+
     Rectangle cell;
     Color color = Color.BLACK;
     List<Polygon> display;
@@ -44,7 +46,7 @@ public abstract class Plant implements PlantInterface {
             return;
         }
 
-        growthTime += 1;
+        growthTime += 1 * growthMultiplier;
     }
 
     @Override

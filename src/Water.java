@@ -1,7 +1,8 @@
+import java.awt.Color;
+
 public class Water extends Tile {
     public Water(Cell x) {
-        color = color.BLUE;
-        cell = x;
+        super(x, Color.BLUE);
         isWater = true;
     }
 }

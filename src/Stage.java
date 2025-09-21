@@ -1,6 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -50,7 +51,9 @@ public class Stage {
         if (hoverCell.plant.isGrown) {
           g.drawString("Ready to harvest!", 800, 45);
         } else {
-          g.drawString("Time until grown: " + String.valueOf(Math.round(hoverCell.plant.growthTimeMax - hoverCell.plant.growthTime/60)), 800, 45);
+          DecimalFormat df = new DecimalFormat();
+          df.setMaximumFractionDigits(2); // how many digits to show
+          g.drawString("Time until grown: " + String.valueOf(df.format(hoverCell.plant.growthTimeMax - hoverCell.plant.growthTime/60)), 800, 45);
         }
       }
     }
@@ -78,6 +81,8 @@ public class Stage {
         if(tileCheck && money >= currentMode.plant.price) {
           cell.plant = currentMode.makePlant(cell);
           money -= cell.plant.price;
+          // push the growthBoost into plant object
+          cell.plant.growthMultiplier += cell.tile.growthBoost;
         }
       } else if (currentMode instanceof CollectButton && cell.hasPlant()) {
         if (cell.plant.isGrown) {

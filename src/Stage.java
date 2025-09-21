@@ -29,6 +29,7 @@ public class Stage {
 
     // always visable UI
     g.drawString("Money: $" + String.valueOf(money), 740, 15);
+    g.drawString("Placing: " + String.valueOf(money), 820, 15);
 
     Optional<Cell> underMouse = grid.cellAtPoint(mouseLoc);
     if(underMouse.isPresent()) {
@@ -38,7 +39,6 @@ public class Stage {
       g.drawString(String.valueOf(hoverCell.col) + String.valueOf(hoverCell.row), 740, 45);
 
       if(hoverCell.hasPlant()) g.drawString("Planted in cell: " + String.valueOf(hoverCell.plant), 800, 30);
-      g.drawString("Placing: ", 800, 45);
     }
 
     // TODO : make buttons
@@ -53,9 +53,11 @@ public class Stage {
     Optional<Cell> selected =  grid.cellAtPoint(p);
     if(selected.isPresent()) {
       Cell cell = selected.get();
-      if (cell.tilePlantable()) { // check if you can plant there
+      if (cell.tilePlantable(true)) { // check if you can plant there
         cell.plant = new Carrot(cell);
       }
     }
+
+
   }
 }

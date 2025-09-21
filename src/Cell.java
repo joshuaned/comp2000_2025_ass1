@@ -34,12 +34,19 @@ public class Cell extends Rectangle {
     }
   }
 
+  public void placePlant(int x) {
+    //TODO: create planting system
+  }
+
   public boolean hasPlant() {
     return plant != null;
   }
 
-  public boolean tilePlantable() {
-    return !(tile instanceof Water);
+  public boolean tilePlantable(boolean isLand) {
+    if (isLand) {
+      return !(tile instanceof Water);
+    }
+    return true;
   }
 
   public void paint(Graphics g, Point mousePos) {

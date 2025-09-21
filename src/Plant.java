@@ -8,6 +8,8 @@ public abstract class Plant {
     int growthTimeMax;
     int growthTime = 0;
     int price;
+    boolean waterPlant = false;
+
     Rectangle cell;
     Color color;
     List<Polygon> display;

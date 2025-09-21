@@ -4,7 +4,7 @@ I wanted to do something a little different from the standard expansion, which i
 I turned the given project into a farming game using inheritance, interfaces, and generics.\
 You start with $10 and are able to select crops and place them on their respective tile type.\
 Some tiles will give a growth multiplier to the plants. The tiles and plants will display various information when hovered over.\
-Plants take time to grow; hovering over them will show how long is left. Plants can be collected and sold by clicking the collect button. At the top right of the window, next to 'Money', your current click mode will be displayed.\
+Plants take time to grow; hovering over them will show how long is left. Plants can be collected and sold by clicking the collect button to change the current click mode, then clicking on the fully grown plant. At the top right of the window, next to 'Money', your current click mode will be displayed.\
 You must have enough money to purchase and sow the plant.\
 The actors are there for decoration purposes. In a future version of the game, they may have worked as scarecrows.
 
@@ -17,7 +17,7 @@ And I finished up the basic game loop with a couple of crops to choose from, it 
 This program was designed in Java 21. You can run the program from main.\
 Game playing instructions are above ^^^ (under Game outline)
 
-## How I utilised Inheritance and Interfaces
+## How I utilised Inheritance
 I created three main abstract classes that allow the efficient use of inheritance for easily adding new plants to the game, new kinds of tiles, and new buttons.\
 The superclass Tile, which is set as abstract for the reason that it is not to be directly used as an object itself, has a few children in this project, being Water.java, Grass.java, and Farmland.java.\
 Since the children of Tile.java will all be very similar, just with little changes, the cell can, instead of containing all the variables and methods of the tiles, create new objects instead.\
@@ -32,7 +32,8 @@ The superclasses also all contain their own paint method, so it can be easily ca
 In my program, by utilising inheritance and creating objects that inherit from a so-called super class, being my abstract classes, allows me to avoid rewriting code for every single land tile I want to create; this is the same with the plants and buttons.\
 Since they are all very similar, they can reuse the same code, and just super(data) into the abstract class's constructor. They can also directly set variables that don't always need to be set.
 
-Plant.java implements PlantInterface.java as all Plant classes must contain the method grow(), as all plants in this game are expected to grow, this makes sure that if I or anyone else worked on the project again, it is easily understood that if more Plant superclasses are to be made, for example if the plants were to have different functions and we needed to create WaterPlant.java SandPlant.java, ect... they must all have grow if they are to implement PlantInterface.java.
+## How I utilised Interfaces
+Plant.java implements PlantInterface.java; all Plant classes must contain the method grow(). As all plants in this game are expected to grow, this ensures that if I or anyone else were to work on the project again, it would be easily understood that if more Plant superclasses are to be created, they should implement PlantInterface and therefore have the grow() method. For example, if the plants were to have different functions and we needed to create WaterPlant.java, SandPlant.java, etc., they must all have grow() if they are to implement PlantInterface.java.
 
 #### How Interfaces Support Good Design
 Interfaces allow a developer to enforce methods into a class, with the design of my project I didn't use many interfaces as they weren’t necessary with what needed to be achieved, however I did create a PlantInterface.java, which by implementing it into Plant.java sets an expectation that Plant should have the method grow, this is useful since all plants should have this function, as to grow.\

@@ -1,11 +1,16 @@
 ## Game outline
+I wanted to do something a little different then whats probably going to be just moving characters and picking up items, so I made a farming game.
+
 I turned the given project into a farming game using inheritance, interfaces, and generics.\
 You start with $10 and are able to select crops and place them on their respective tile type.\
 Some tiles will give a growth multipler to the plants. The tiles and plants will display various information when hovered over.\
 Plants take time to grow, hovering over them will show how long is left. Plants can be collected and sold by clicking the collect button. At the top right of the window next to money, your current click mode will be shown.\
 The actors are there for decoration purposes. In a future version of the game they may have worked as scarecrows.
 
-// TODO: explain more on design choices
+### Design choices
+I created an auto generated landscapes system\
+I added items in the game in the form of plants that can be sown and harvested\
+And I finished up the basic game loop with a couple crops to choose from, it should be quite expandable
 
 ## How I utilised Inheritence and Interfaces
 I created three main abstract classes that allow the efficent use of inheritence for easily adding new plants to the game, and new kinds of tiles.\

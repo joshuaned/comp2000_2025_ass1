@@ -5,10 +5,11 @@ import java.awt.Rectangle;
 import java.util.List;
 
 public abstract class Plant {
-    int growthTimeMax;
+    int growthTimeMax = 30;
     int growthTime = 0;
     int price;
     boolean waterPlant = false;
+    boolean isGrown = false;
 
     Rectangle cell;
     Color color;
@@ -22,6 +23,19 @@ public abstract class Plant {
             g.setColor(color.GRAY);
             g.drawPolygon(p);
         }
+
+        grow();
+    }
+
+    public void grow() {
+        if(growthTime >= growthTimeMax) {
+            isGrown = true;
+            return;
+        } else if (isGrown) {
+            return;
+        }
+
+        growthTime += 1;
     }
 
     @Override

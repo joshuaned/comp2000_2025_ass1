@@ -70,10 +70,15 @@ public class Stage {
       Cell cell = selected.get();
       if(!(currentMode instanceof CollectButton)) { // all other buttons will house instances of plant
         // check if its a water plant
-        if(cell.tile.isWater && currentMode.plant.waterPlant || !cell.tile.isWater && !currentMode.plant.waterPlant) {
+        boolean tileCheck = (cell.tile.isWater && currentMode.plant.waterPlant || !cell.tile.isWater && !currentMode.plant.waterPlant);
+        if(tileCheck) {
           cell.plant = currentMode.makePlant(cell);
         }
-      } 
+      } else if (currentMode instanceof CollectButton && cell.plant != null) {
+        if (cell.plant.isGrown) {
+          cell.plant = null;
+        }
+      }
     }
   }
 
